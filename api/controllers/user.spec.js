@@ -1,5 +1,5 @@
 const UserController = require("./user");
-const User = require("../models/user");
+const User = require("../models/User");
 
 const findAllResult = [{}];
 const findResult = {};
