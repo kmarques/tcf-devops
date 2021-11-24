@@ -2,13 +2,11 @@ const User = require("../models/User");
 
 const UserController = {};
 
-UserController.getUsers = (req, res) => {
-  return User.findAll({ where: req.query }).then((data) => res.json(data));
-};
+UserController.getUsers = (req, res) =>
+  User.findAll({ where: req.query }).then((data) => res.json(data));
 
-UserController.post = (req, res) => {
-  return User.create(req.body).then((data) => res.status(201).json(data));
-};
+UserController.post = (req, res) =>
+  User.create(req.body).then((data) => res.status(201).json(data));
 
 UserController.getUser = (req, res) => {
   const { id } = req.params;

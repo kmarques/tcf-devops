@@ -1,12 +1,12 @@
 module.exports = function (leftOperand, operator, rightOperand) {
   switch (operator) {
-    case "+":
+    case '+':
       return leftOperand + rightOperand;
-    case "-":
+    case '-':
       return leftOperand - rightOperand;
-    case "*":
+    case '*':
       return leftOperand * rightOperand;
-    case "/":
+    case '/':
       return leftOperand / rightOperand;
     default:
       return 0;

@@ -6,7 +6,11 @@
   "private": true,
   "scripts": {
     "start": "nodemon server.js",
-    "test": "jest"
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "jest -c jest.config.unit.js",
+    "test:e2e": "jest -c jest.config.e2e.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "author": "",
   "license": "ISC",
@@ -19,6 +23,7 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-jest": "^25.3.0",
     "jest": "^27.3.1",
     "nodemon": "^2.0.13",
     "sinon": "^11.1.2",

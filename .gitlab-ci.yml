@@ -1,0 +1,45 @@
+stages:
+  - check
+  - test
+  - deploy
+
+image:
+  name: node:latest
+
+before_script:
+  - cd api
+  - npm install
+
+lint:
+  stage: check
+  script:
+    - npm run lint
+
+unit_test:
+  stage: test
+  script:
+    - npm run test:unit
+
+e2e_test:
+  stage: test
+  variables:
+    POSTGRES_DB: test
+    POSTGRES_USER: user
+    POSTGRES_PASSWORD: password
+    DATABASE_URL: postgres://user:password@db:5432/test
+  services:
+    - name: postgres:latest
+      alias: db
+  script:
+    - npm run test:e2e
+
+deploy:
+  stage: deploy
+  cache: {}
+  variables:
+    NODE_ENV: production
+  script:
+    - echo $NODE_ENV
+    - du -sh ./node_modules
+  only:
+    - master

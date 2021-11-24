@@ -4,18 +4,17 @@ const User = require("../models/user");
 const findAllResult = [{}];
 const findResult = {};
 
-jest.mock("../models/User", () => {
-  return {
-    findAll: jest.fn().mockResolvedValue(findAllResult),
-    findByPk: jest.fn().mockResolvedValue(findResult),
-    create: jest.fn().mockResolvedValue(findResult),
-    destroy: jest.fn().mockResolvedValue(),
-    update: jest.fn().mockResolvedValue([, [findResult]]),
-  };
-});
+jest.mock("../models/User", () => ({
+  findAll: jest.fn().mockResolvedValue(findAllResult),
+  findByPk: jest.fn().mockResolvedValue(findResult),
+  create: jest.fn().mockResolvedValue(findResult),
+  destroy: jest.fn().mockResolvedValue(),
+  update: jest.fn().mockResolvedValue([undefined, [findResult]]),
+}));
 
 describe("user test", () => {
-  let res, req;
+  let res;
+  let req;
   beforeEach(() => {
     res = {
       json: jest.fn(),
