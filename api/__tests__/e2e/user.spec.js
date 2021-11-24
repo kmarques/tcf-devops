@@ -70,7 +70,6 @@ describe("Post Endpoints", () => {
 
     const res = await request(app).delete(`/users/${user.id}`);
     expect(res.statusCode).toEqual(204);
-    console.log(res);
     expect(res.body).toEqual({});
   });
 });
