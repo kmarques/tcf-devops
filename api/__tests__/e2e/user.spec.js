@@ -20,7 +20,11 @@ async function createUser() {
 
 describe("Post Endpoints", () => {
   beforeEach(async () => {
-    await sequelize.query('DELETE FROM "Users"');
+    try {
+      await sequelize.query('DELETE FROM "Users"');
+    } catch (error) {
+      if (error.message !== 'relation "Users" does not exist') throw error;
+    }
   });
   afterAll(async () => {
     await sequelize.close();
